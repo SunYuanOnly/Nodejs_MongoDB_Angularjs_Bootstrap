@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html ng-app="myApp" ng-controller="signupController">
+<head>
+    <title><%= title %></title>
+    <link href="/assets/css/bootstrap.min.css" rel="stylesheet">
+    <script src="/javascripts/angular.min.js"></script>
+    <script src="/javascripts/test.js"></script>
+    <script type="text/javascript" src="/AngularJsControll/CtrLogin.js"></script>
+    <style type="text/css">
+       html body{
+           background: url("/images/body-bg-4.jpg") repeat-x;
+           font-family:"Microsoft YaHei",微软雅黑,"Microsoft JhengHei",华文细黑,STHeiti,MingLiu
+       }
+       input,button,a {
+           outline:0 none !important; blr:expression(this.onFocus=this.blur());
+       }
+       .test .modal-dialog
+       {
+           animation:myfirst 2s;
+           top: 120px;
+       }
+       .test .modal-content{
+           width:500px;
+           left:50%;
+           margin-left:-250px;
+       }
+       @keyframes myfirst
+       {
+           0%   {  top:0px;}
+           /*50%   {  top:50px;}*/
+           100% {  top:120px;}
+       }
+       @-moz-keyframes myfirst /* Firefox */
+       {
+           0%   {  top:0px;}
+           /*50%   {  top:50px;}*/
+           100% {  top:120px;}
+       }
+       @-webkit-keyframes myfirst /* chrome safrom*/
+       {
+           0%   {  top:0px;}
+           /*50%   {  top:50px;}*/
+           100% {  top:120px;}
+       }
+       @-o-keyframes mymove /* Opera */
+       {
+           0%   {  top:0px;}
+           /*50%   {  top:50px;}*/
+           100% {  top:120px;}
+       }
+       .welcomeLeft{height:35px;width: 5px; float: left;background:url(/images/welcomeInputLeft.png) no-repeat;}
+       .welcomeCenter{height:35px;float:left;background:url(/images/welcomeInputCenter.png) repeat-x;border: none; line-height:35px;}
+       .welcomeRight{width: 5px;height:35px;float:left;background:url(/images/welcomeInputRight.png)  no-repeat;}
+   </style>
+</head>
+<body>
+
+<script type="text/ng-template" id="myModalContent.html">
+    <div  style="height:220px;">
+        <form method="post"  novalidate name="signup_form"  ng-submit="signupForm()">
+            <div align="center" style="margin-top: 50px;" >
+                <div style="float:left;margin-bottom: 20px;margin-left:60px;">
+                    <label style="float:left;line-height: 35px;font-size:16px;margin-left: 20px;">账号：</label>
+                    <div class="welcomeLeft photo_png"></div>
+                          <input type="text" name="name" ng-model="name" class="reg-form-input welcomeCenter photo_png" id="MLogin_id" style="width: 250px;" autocomplete="off" placeholder="手机号/邮箱" required/>
+                    <div class="welcomeRight photo_png"></div>
+                    <span class="glyphicon glyphicon-user " style="float: left;position: relative;right:20px;top:10px;"></span>
+                    <span ng-show="signup_form.name.$dirty && signup_form.name.$invalid && signup_form.submitted">
+                        <span ng-show="signup_form.name.$error.required" style="position:relative;right:6px;top:5px;font-size: 13px;color: red;">用户名不能为空</span>
+                    </span>
+                </div>
+                <div style="float:left;margin-bottom: 30px;margin-left: 60px;">
+                    <label style="float:left;line-height: 35px;font-size:16px;margin-left: 20px;">密码：</label>
+                    <div class="welcomeLeft photo_png"></div>
+                        <input type="password" ng-model="password" class="reg-form-input welcomeCenter photo_png" id="Login_password" placeholder="密码" style="width: 250px;" required/>
+                    <div class="welcomeRight photo_png"></div>
+                    <span class="glyphicon glyphicon-lock" style="float: left;position: relative;right:20px;top:10px;"></span>
+                </div>
+                <div  style="clear:both;">
+                    <button class="btn  btn-warning " ng-click="cancel()" type="button" style="width:110px;">Cancel</button>&nbsp;&nbsp;&nbsp;&nbsp;
+                    <button class="btn btn-success "  type="submit" style="width:110px;"> login</button>
+                </div>
+            </div>
+        </form>
+      </div>
+       </script>
+</div>
+</body >
+</html>

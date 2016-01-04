@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html ng-app="myIndex" >
+<head>
+    <title><%= title %></title>
+    <script type="text/javascript" src="/AngularJsControll/angular.min.js"></script>
+    <link href="/assets/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/assets/css/bootstrap.css" rel="stylesheet">
+    <link href="/assets/css/bootstrap-theme.min.css" rel="stylesheet">
+    <script src="/javascripts/test.js"></script>
+    <script type="text/javascript" src="/AngularJsControll/CtrIndex.js"></script>
+    <style type="text/css">
+        input,button,a {
+            outline:0 none !important; blr:expression(this.onFocus=this.blur());
+        }
+        .test .modal-dialog
+        {
+            animation:myfirst 2s;
+            top: 100px;;
+        }
+        .test .modal-content{
+            width:500px;
+            left:50%;
+            margin-left:-250px;;
+        }
+        @keyframes myfirst
+        {
+            0%   {  top:0px;}
+            /*50%   {  top:50px;}*/
+            100% {  top:100px;}
+        }
+    </style>
+</head>
+<body ng-controller="Index_list" window.onload="">
+<div style="width: 100%;">
+<div class="panel panel-primary" style="float: right;width:100%">
+    <div class="panel-heading">
+        <p>
+         <span class="panel-title" style="margin-top: 10px; ">
+            表格信息<sayHello></sayHello>
+        </span>
+            <button class="btn btn-danger" ng-click="logout()" style="float: right;">注销</button>
+            <button class="btn btn-danger" ng-click="test()" style="float: right;">跳转</button>
+        </p>
+    </div>
+    <div class="panel-body">
+        <table id="tableview" ng-table="tableview" class="table table-striped table-hover table-bordered">
+            <thead>
+            <tr>
+                <th>#</th>
+                <th>ID</th>
+                <th >姓名</th>
+                <th>年龄</th>
+                <th>性别</th>
+                <th>地址</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat="data in data | filter:searchName">
+                <td><input  type="radio"  name="optionsRadios"  id={{data._id}} ng-click="Selection($event)"></td>
+                <!--<td>{{$index}}</td>-->
+                <td>{{data._id}}</td>
+                <td>{{data.stuname}}</td>
+                <td>{{data.age}}</td>
+                <td>{{data.sex}}</td>
+                <td>{{data.adress}}</td>
+            </tr>
+            </tbody>
+        </table>
+        <ul class="pagination">
+            <li><a ng-click="prePage()">&laquo;</a></li>
+            <li><a ng-click="Page(1)">首页</a></li>
+            <li><a ng-click="Page(1)">1</a></li>
+            <li><a ng-click="Page(2)">2</a></li>
+            <li><a ng-click="Page(3)">3</a></li>
+            <li><a ng-click="LastPage()">最后一页</a></li>
+            <li><a ng-click="nextPage()">&raquo;</a></li>
+        </ul>
+    </div>
+    <div class="panel-footer">
+        <div id="tb">
+            <div>
+                <a class="btn btn-success " ng-click="openUserAddDialog()"   >添加用户</a>&nbsp;
+                <a class="btn  btn-primary " ng-click="openUserModifyDialog()" >修改用户</a>&nbsp;
+                <a class="btn btn-danger "  ng-click="deleteUser()">删除用户</a>&nbsp;&nbsp;&nbsp;&nbsp;
+                <span style="float: right;">
+                    <!--ng-change="Search()"-->
+                <input type="text" ng-model="searchName" class="input-medium search-query" style="float:left;margin-top: 5px;" >&nbsp;
+                  <button type="submit" ng-click="Search()" class="btn" style="float:right;">Search</button>
+                </span>
+                <span style="clear: both;"></span>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+<div ng-controller="MessageController">
+    <script type="text/ng-template" id="MyIndexMessage.html">
+            <div class="panel panel-info">
+                <div class="panel-heading">
+                    <h3 class="panel-title" ng-model="title">{{title}}</h3>
+                </div>
+                <div class="panel-body">
+                    <form class="form" id="frm">
+                        <fieldset>
+                            <div style="margin-bottom: 15px;">
+                                  <label>姓&nbsp;&nbsp;名：</label>
+                                  <input  type="text" ng-model="stuname" id="stuname" name="stuname"  required="true" />
+                            </div>
+                            <div style="margin-bottom: 15px;">
+                                  <label>年&nbsp;&nbsp;龄：</label>
+                                  <input type="text" ng-model="age" id="age" name="age"  required="true"/>
+                            </div>
+                            <div style="margin-bottom: 15px;">
+                                  <label>性&nbsp;&nbsp;别：</label>
+                                  <input type="text" ng-model="sex" id="sex" name="sex"  required="true"/>
+                            </div>
+                            <div style="margin-bottom: 15px;">
+                                  <label>地&nbsp;&nbsp;址：</label>
+                                  <input type="text" ng-model="adress"  id="adress" name="adress" style="width: 300px;" required="true"/>
+                            </div>
+                        </fieldset>
+                    </form>
+                </div>
+                <div class="panel-footer">
+                    <div  style="text-align: right;">
+                        <button class="btn  btn-warning " ng-click="cancel()" >Cancel</button>
+                        <button class="btn  btn-info " ng-click="saveUser()">confirm</button>&nbsp;
+                    </div>
+                </div>
+            </div>
+    </script>
+</div>
+</body>
+</html>
+
